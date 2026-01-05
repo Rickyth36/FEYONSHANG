@@ -1,6 +1,4 @@
-import { request } from "express";
 import mongoose from "mongoose";
-import BestSeller from "../../frontend/src/components/BestSeller";
 
 const productSchema = new mongoose.Schema({
     name: {
@@ -31,7 +29,7 @@ const productSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    BestSeller: {
+    bestseller: {
         type: Boolean
     },
     date: {
