@@ -30,6 +30,7 @@ const Add = ({token}) => {
       formData.append("subCategory", subCategory);
       formData.append("bestSeller", bestSeller.toString());
       formData.append("sizes", JSON.stringify(sizes));
+
       image1 && formData.append("image1", image1);
       image2 && formData.append("image2", image2);
       image3 && formData.append("image3", image3);
@@ -55,7 +56,7 @@ const Add = ({token}) => {
       }
       console.log(response.data);
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
@@ -255,7 +256,7 @@ const Add = ({token}) => {
           <div
             className=""
             onClick={() =>
-              setSizes((prev) =>
+              setSizes((prev) => 
                 prev.includes("XXL")
                   ? prev.filter((item) => item !== "XXL")
                   : [...prev, "XXL"]
