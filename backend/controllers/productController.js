@@ -3,7 +3,8 @@ import productModel from '../models/productModel.js';
 
 const addproduct = async(req,res) => {
     try {
-        const {name, description, price, category, subCategory, sizes, bestSeller } = req.body;
+        const {name, description, price, category, subCategory, sizes, bestseller } = req.body;
+        console.log("REQ BODY", req.body);
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
         const image3 = req.files.image3 && req.files.image3[0]
@@ -24,12 +25,12 @@ const addproduct = async(req,res) => {
             category,
             subCategory,
             sizes: JSON.parse(sizes),
-            bestSeller: bestSeller === "true" ? true: false,
+            bestseller: bestseller === "true" ? true: false,
             image: imagesUrl,
             date: Date.now()
         }
 
-        console.log(name, description, price, category, subCategory, sizes, bestSeller );
+        console.log(name, description, price, category, subCategory, sizes, bestseller );
         console.log(productData);
 
         const product = new productModel(productData);

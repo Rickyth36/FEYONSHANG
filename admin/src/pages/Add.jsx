@@ -28,7 +28,7 @@ const Add = ({token}) => {
       formData.append("price", price);
       formData.append("category", category);
       formData.append("subCategory", subCategory);
-      formData.append("bestSeller", bestSeller.toString());
+      formData.append("bestseller", bestSeller.toString());
       formData.append("sizes", JSON.stringify(sizes));
 
       image1 && formData.append("image1", image1);
@@ -275,13 +275,13 @@ const Add = ({token}) => {
       </div>
       <div className="flex gap-2 mt-2">
         <input
-          id="bestSeller"
+          id="bestseller"
           onChange={(e) => setBestSeller(e.target.checked)}
           checked={bestSeller}
           type="checkbox"
         />
-        <label className="cursor-pointer" htmlFor="bestSeller">
-          Add to bestSeller
+        <label className="cursor-pointer" htmlFor="bestseller">
+          Add to best seller
         </label>
       </div>
       <button className="w-28 py-3 mt-4 bg-black text-white" type="submit">
