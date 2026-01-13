@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { backendUrl } from "../../../admin/src/App";
+// import { backendUrl } from "../../../admin/src/App";
 import axios from 'axios';
 export const ShopContext = createContext();
 
@@ -33,6 +33,20 @@ const ShopContextProvider = (props) => {
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData);
+        if(token) {
+            try {
+                const res = await axios.post(
+                backendUrl + '/api/cart/add',
+                { itemId, size },
+                { headers: { token } }
+                );
+
+                console.log("Backend response:", res.data);
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     }
     const getCartCount = () => {
         let totalCount = 0;

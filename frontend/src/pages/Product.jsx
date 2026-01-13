@@ -12,13 +12,16 @@ const Product = () => {
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
 
-  const fetchProductData = async () => {
+  const fetchProductData = () => {
     const product = products.find(item => item._id === productId);
-    setProductData(product);
-    setImage(product.image[0])
-  }
+
+    if (product) {
+      setProductData(product);
+      setImage(product.image[0]);
+    }
+  };
   useEffect(() => {
-    fetchProductData();
+   fetchProductData();
   },[productId, products])
   return productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
@@ -60,7 +63,7 @@ const Product = () => {
               }
             </div>
           </div>
-          <button onClick={() => addToCart(productData._id,size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700' >ADD TO CART</button>
+          <button onClick={() => {addToCart(productData._id,size)}} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700' >ADD TO CART</button>
           <hr className="mt-8 sm:w-4/5 text-gray-300" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% Origin product.</p>

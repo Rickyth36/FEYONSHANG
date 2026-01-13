@@ -26,11 +26,11 @@ const List = ({ token }) => {
         { id },
         { headers: { token } }
       );
-      if ((response.data.success)) {
+      if (response.data.success) {
         toast.success(response.data.message);
         await fetchList();
       } else {
-        toast.error((response.data.message));
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -64,7 +64,10 @@ const List = ({ token }) => {
               {currency}
               {item.price}
             </p>
-            <p onClick={() => removeProduct(item._id)} className="text-right md:text-center cursor-pointer text-lg">
+            <p
+              onClick={() => removeProduct(item._id)}
+              className="text-right md:text-center cursor-pointer text-lg"
+            >
               X
             </p>
           </div>
