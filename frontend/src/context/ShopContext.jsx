@@ -1,12 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { backendUrl } from "../../../admin/src/App";
 import axios from 'axios';
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-    const currency = '$';
+    const currency = '₹';
     const deliveryFee = 10;
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [search, setSearch] = useState('');
