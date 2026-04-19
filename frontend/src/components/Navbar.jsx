@@ -5,6 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const {setShowSearch, getCartCount, setCartItems, token, setToken, navigate} = useContext(ShopContext);
+    const adminUrl = import.meta.env.VITE_ADMIN_URL;
 
     const logOut = () => {
         navigate('/login');
@@ -12,6 +13,10 @@ const Navbar = () => {
         localStorage.removeItem('token');
         setCartItems({});
     } 
+
+    const navigateAdmin = () => {
+    window.open(adminUrl, "_blank", "noopener,noreferrer");
+    }; 
     
   return (
     <div className='flex items-center justify-between py-5 font-medium' >
@@ -35,6 +40,9 @@ const Navbar = () => {
                 <p>CONTACT</p>
                 <hr className='w-1/2 border-none h-[1.5px] bg-gray-700 hidden' />
             </NavLink>
+            <div onClick={navigateAdmin} className="border-2 border-gray-400 rounded-xl cursor-pointer">
+                <p className='mx-2'>Admin login</p>
+            </div>
         </ul>
         <div className="flex items-center gap-6">
             <img onClick={() => setShowSearch(true)} className='w-5 cursor-pointer' src={assets.search_icon} alt="" />
